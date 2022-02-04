@@ -21,7 +21,7 @@ public class HelloController {
         return "hello-template";
     }
 
-    @GetMapping("hello-string")
+    @GetMapping("hello-strings")
     @ResponseBody
     public String helloString(@RequestParam(name="name") String name){
         return "hello " + name;
