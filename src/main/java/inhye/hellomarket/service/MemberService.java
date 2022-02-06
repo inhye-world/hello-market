@@ -10,11 +10,9 @@ import java.util.List;
 import java.util.Optional;
 
 //서비스는 비즈니스를 처리하니까 그 롤에 맞는 네이밍을 해줄것
-@Service
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
