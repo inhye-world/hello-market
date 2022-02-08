@@ -5,11 +5,13 @@ import inhye.hellomarket.repository.MemberRepository;
 import inhye.hellomarket.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 //서비스는 비즈니스를 처리하니까 그 롤에 맞는 네이밍을 해줄것
+@Transactional
 public class MemberService {
     private final MemberRepository memberRepository;
 
