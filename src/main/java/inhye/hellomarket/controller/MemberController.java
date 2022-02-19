@@ -1,11 +1,13 @@
 package inhye.hellomarket.controller;
 
+import inhye.hellomarket.domain.Login;
 import inhye.hellomarket.domain.Member;
 import inhye.hellomarket.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -19,6 +21,11 @@ public class MemberController {
                 this.memberService = memberService;
         }
 
+        @GetMapping("/members/login")
+        public String loginPage(@ModelAttribute Login login){
+                return "members/loginForm";
+        }
+
         @GetMapping("/members/new")
         public String createForm(){
                 return "members/createMemberForm";
@@ -29,6 +36,9 @@ public class MemberController {
                 Member member = new Member();
                 member.setName(form.getName());
                 member.setPassword(form.getPassword());
+
+                //기본으로는 다 role_user
+                member.setRole("ROLE_USER");
 
                 memberService.join(member);
 

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<body>
+<div class="container">
+  <form id="loginForm" th:action="@{/members/login}" th:object="${login}" method="post">
+    <div class="form-group">
+      <label for="name">닉네임</label>
+      <input type="text" id="name" name="name" placeholder="닉네임을 입력하세요">
+    </div>
+    <div class="form-group">
+      <label for="password">비밀번호</label>
+      <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+    </div>
+    <button type="submit">로그인 하기!</button>
+  </form>
+  <a href="/member/new">계정이 없으신가요?</a>
+</div>
+</body>
+</html>
