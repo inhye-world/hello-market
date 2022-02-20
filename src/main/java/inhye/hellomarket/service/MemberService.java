@@ -1,48 +1,48 @@
 package inhye.hellomarket.service;
 
 import inhye.hellomarket.domain.Member;
+import inhye.hellomarket.domain.Role;
 import inhye.hellomarket.repository.MemberRepository;
-import inhye.hellomarket.repository.MemoryMemberRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 //서비스는 비즈니스를 처리하니까 그 롤에 맞는 네이밍을 해줄것
-@Transactional
-public class MemberService {
-    private final MemberRepository memberRepository;
+@Service
+public class MemberService{
 
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
+    @Autowired
+    private MemberRepository memberRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     /*
     회원가입
      */
-    public long join(Member member){
-        //같은 이름이 있는 중복회원 x
-        validateDuplicateMember(member); //중복 회원 검증 후 통과하면 저장
-        memberRepository.save(member);
-        return member.getId();
-    }
+    @Transactional
+    public Member join(Member member){
 
-    private void validateDuplicateMember(Member member) {
-        memberRepository.findByName(member.getName())
-                .ifPresent(m -> {
-                    throw new IllegalStateException("이미 존재하는 회원입니다.");
-                });
-    }
-    /*
-    전체 회원 조회
-     */
-    public List<Member> findMembers(){
-        return memberRepository.findAll();
-    }
+        String encodedPassword = passwordEncoder.encode(member.getPassword());
+        member.setPassword(encodedPassword);
+        member.setEnabled(true);
 
-    public Optional<Member> findOne(Long memberId){
-        return memberRepository.findById(memberId);
+        Role role = new Role();
+        role.setId(10L);
+        member.getRoles().add(role);
+        return memberRepository.save(member);
     }
 }
