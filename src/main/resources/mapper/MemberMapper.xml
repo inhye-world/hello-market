@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="inhye.hellomarket.mapper.MemberMapper">
+
+    <insert id="singup">
+        insert into member (username, pwd, authority) values (#{username}, #{pwd}, 'ROLE_USER')
+    </insert>
+
+    <select id="chkPwd" resultType="String">
+        select pwd from member where username = #{username}
+    </select>
+
+    <select id="getUserInfo" resultType="Member">
+        select * from member where username = #{username}
+    </select>
+
+    <select id="findByUsername" resultType="Member">
+        select * from member where username = #{username}
+    </select>
+
+    <select id="selectUserAuth" resultType="hashmap">
+        select authority from member where username = #{username}
+    </select>
+
+    <select id="getUserName" resultType="String">
+        select name from member where username = #{username}
+    </select>
+
+    <select id="getSameUsername" resultType="Member">
+        select * from member where username = #{username}
+    </select>
+</mapper>

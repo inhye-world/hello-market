@@ -15,7 +15,7 @@ import java.io.IOException;
 public class AuthFailureHandler implements AuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-        String username = httpServletRequest.getParameter("name");
+        String username = httpServletRequest.getParameter("username");
         httpServletResponse.sendRedirect("/members/failLogin");
     }
 }

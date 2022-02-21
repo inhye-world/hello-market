@@ -1,23 +1,47 @@
 package inhye.hellomarket.config;
 
+import inhye.hellomarket.security.AuthFailureHandler;
+import inhye.hellomarket.security.CustomUserDetailService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+@Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private DataSource dataSource;
+    private AuthFailureHandler authFailureHandler;
+
+    @Autowired
+    private CustomUserDetailService customUserDetailService;
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+        auth.userDetailsService(customUserDetailService).passwordEncoder(passwordEncoder());
+    }
+
+    @Override
+    public void configure(WebSecurity webSecurity) throws Exception {
+        webSecurity.ignoring().antMatchers("/css/**", "/js/**", "/images/**", "/fonts/**", "/vendor/**");
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -35,23 +59,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .logoutUrl("/members/logout")
                     .logoutSuccessUrl("/members/login")
                     .invalidateHttpSession(true);
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth)
-            throws Exception {
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .usersByUsernameQuery("select username, password, enabled "
-                        + "from member "
-                        + "where username = ?")
-                .authoritiesByUsernameQuery("select username, name "
-                        + "from member_role mr inner join member m on mr.member_id = m.id "
-                        + "inner join role r on mr.role_id = r.id ");
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 }
