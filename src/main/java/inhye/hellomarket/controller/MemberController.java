@@ -37,17 +37,17 @@ public class MemberController {
 
                 if(chksameid != null) {
                         model.addAttribute("invalid_id", "이미 존재하는 아이디 입니다.");
-                        return "member/signupForm";
+                        return "members/createMemberForm";
                 }
                 //비밀번호 확인이 일치하지 않을 때
                 if(!member.getPwd().isEmpty()){
                         if(!member.isPwdEqual()){
                                 model.addAttribute("invalid_pwd_cf", "비밀번호가 일치하지 않습니다.");
-                                return "member/signupForm";
+                                return "members/createMemberForm";
                         }
                 }
 
                 memberService.signup(member);
-                return "redirect:/members/login";
+                return "redirect:/hello";
         }
 }
