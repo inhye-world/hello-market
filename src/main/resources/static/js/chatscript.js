@@ -1,6 +1,5 @@
 $(document).ready(function(){
-
-    const username = 'tt';
+    const username = [[${#authentication.principal.username}]];
 
     $("#disconn").on("click", (e) => {
         disconnect();

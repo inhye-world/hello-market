@@ -11,8 +11,6 @@ public interface MemberMapper {
 
     String chkPwd(String username);
 
-    String getUserName(String username);
-
     Member getSameUsername(String username);
 
     Member findByUsername(String username);

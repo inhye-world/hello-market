@@ -23,10 +23,6 @@
         select authority from member where username = #{username}
     </select>
 
-    <select id="getUserName" resultType="String">
-        select name from member where username = #{username}
-    </select>
-
     <select id="getSameUsername" resultType="Member">
         select * from member where username = #{username}
     </select>

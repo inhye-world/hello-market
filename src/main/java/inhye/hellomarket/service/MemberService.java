@@ -50,10 +50,6 @@ public class MemberService{
         return passwordEncoder.matches(rawPwd, userPwd);
     }
 
-    public String selectName(String username) {
-        return memberMapper.getUserName(username);
-    }
-
     public Member chkId(String username) {
         return memberMapper.getSameUsername(username);
     }
