@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.UUID;
 
 public class ChatRoom {
+    private String username;
     private String roomId;
     private String name;
     private Set<WebSocketSession> sessions = new HashSet<>();
