@@ -1,3 +1,4 @@
+/*<![CDATA[*/
 $(document).ready(function(){
     const username = [[${#authentication.principal.username}]];
 
@@ -74,3 +75,4 @@ $(document).ready(function(){
         }
     }
 })
+/*]]>*/
