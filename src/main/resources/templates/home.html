@@ -1,15 +1,20 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <body>
 <div class="container">
     <div>
         <h1>Hello Market</h1>
-        <p>들어오세요!</p>
-        <p>
+        <div sec:authorize="!isAuthenticated()">
+            <p>헬로마켓에 오신걸 환영합니다~!</p>
             <a href="/members/login">로그인</a>
             <a href="/members/new">회원가입</a>
-        </p>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <div><strong><span class="mb-5" sec:authentication="principal.username"></span></strong>님! 오늘도 즐거운 드로잉하세요!</div>
+            <a href="/chat">헬로채팅</a>
+        </div>
     </div>
 </div>
 </body>
