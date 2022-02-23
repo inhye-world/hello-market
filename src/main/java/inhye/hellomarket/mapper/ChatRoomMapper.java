@@ -11,4 +11,6 @@ import java.util.List;
 public interface ChatRoomMapper {
 
     List<ChatRoom> findAllChatroom(String username);
+
+    ChatRoom findRoomById(int roomId);
 }

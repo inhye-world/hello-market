@@ -7,4 +7,11 @@
         select * from chatroom where username = #{username}
     </select>
 
+    <select id="findRoomById" resultType="ChatRoom">
+        select * from chatroom where roomId = #{roomId}
+    </select>
+
+    <insert id="createChatRoom">
+        insert into chatroom(username, name) values(#{username}, ${name})
+    </insert>
 </mapper>

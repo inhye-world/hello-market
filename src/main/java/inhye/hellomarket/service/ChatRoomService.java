@@ -15,6 +15,15 @@ public class ChatRoomService {
     ChatRoomMapper chatRoomMapper;
 
     public List<ChatRoom> findAllChatroom(String username){
+        log.info(username,"의 채팅목록 조회");
         return chatRoomMapper.findAllChatroom(username);
+    }
+
+    public void createChatRoom(String name) {
+    }
+
+    public ChatRoom findRoomById(int roomId) throws Exception{
+        log.info("채팅방 보기");
+        return chatRoomMapper.findRoomById(roomId);
     }
 }
