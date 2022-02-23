@@ -1,25 +1,28 @@
 <!DOCTYPE HTML>
-<!--
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
--->
 <html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
+</head>
 <body>
-<div class="container">
-  <div th:if="${param.error}">
-    Invalid username and password
+<div class="container_login">
+  <div class="wrap_login">
+    <div th:if="${param.error}">
+      Invalid username and password
+    </div>
+    <form id="loginForm" th:action="@{/members/login}" method="post">
+      <div class="form-group">
+        <label for="username">닉네임</label>
+        <input type="text" id="username" name="username" placeholder="닉네임을 입력하세요">
+      </div>
+      <div class="form-group">
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+      </div>
+      <button type="submit">로그인 하기!</button>
+    </form>
+    <a id="signup" href="/members/new">계정이 없으신가요?</a>
   </div>
-  <form th:action="@{/members/login}" method="post">
-    <div class="form-group">
-      <label for="username">닉네임</label>
-      <input type="text" id="username" name="username" placeholder="닉네임을 입력하세요">
-    </div>
-    <div class="form-group">
-      <label for="password">비밀번호</label>
-      <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
-    </div>
-    <button type="submit">로그인 하기!</button>
-  </form>
-  <a href="/members/new">계정이 없으신가요?</a>
 </div>
 </body>
 </html>
