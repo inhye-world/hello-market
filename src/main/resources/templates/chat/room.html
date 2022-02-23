@@ -47,6 +47,8 @@
                 const content = JSON.parse(chat.body);
 
                 const writer = content.writer;
+                const message = content.message;
+
                 let str = '';
 
                 if(writer === username){
@@ -63,8 +65,6 @@
                     str += "</div></div>";
                     $("#msgArea").append(str);
                 }
-
-                $("#msgArea").append(str);
             });
 
             //send(path, header, message)로 메세지를 보낼 수 있음

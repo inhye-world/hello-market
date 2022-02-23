@@ -17,11 +17,11 @@ public class StompChatController {
 
     //client가 send할 수 있는 경로
     //stompConfig에서 설정한 applicationDestinationPrefixes와 @MessageMapping 경로가 병합됨
-    //"/pub/chat/enter"
+    //"/pub/chat/enter" 발행 요청
     @MessageMapping("/chat/enter")
     public void enter(ChatMessage message){
         log.info("enter chat room.....");
-        //Client에서는 prefix를 붙여 "/pub/chat/enter"로 발행 요청
+        ///client에서 요청한 메세지를 처리하여 "/sub/chat/room/[roomId]"로 전송
         message.setMessage(message.getWriter() + "님이 채팅방에 참여했습니다.");
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
     }

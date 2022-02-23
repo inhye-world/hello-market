@@ -8,8 +8,6 @@ import org.springframework.web.socket.config.annotation.*;
 
 @Configuration
 @EnableWebSocketMessageBroker //Stomp를 사용하기위해 선언하는 어노테이션
-//@RequiredArgsConstructor
-//@EnableWebSocket
 public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
@@ -28,12 +26,3 @@ public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer {
         config.enableSimpleBroker("/sub");
     }
 }
-/*public class WebSocketConfig implements WebSocketConfigurer {
-    private final ChatHandler chatHandler;
-
-    @Override
-    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry){
-        registry.addHandler(chatHandler, "ws/chat")
-                .setAllowedOrigins("http://localhost:8203");
-    }
-}*/
