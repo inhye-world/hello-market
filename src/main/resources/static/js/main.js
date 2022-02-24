@@ -22,19 +22,29 @@
         }
     });
 
+    inputValidate.forEach((click) => {
+        click.addEventListener('click', (event) => {
+            event.currentTarget.classList.remove('alert-validate');
+        })
+    });
+
     /*[ Show pass ]*/
+    const btnShowPass = document.querySelector('.btn-show-pass');
+    const btnShowPassi = document.querySelector('.btn-show-pass .fa-eye');
+
     let showPass = 0;
-    $('.btn-show-pass').on('click', function(){
+    btnShowPass.addEventListener('click', (event) => {
+    console.log(event.currentTarget.classList);
         if(showPass == 0) {
-            $(this).next('input').attr('type','text');
-            $(this).find('i').removeClass('fa-eye');
-            $(this).find('i').addClass('fa-eye-slash');
+            btnShowPass.nextElementSibling.setAttribute('type','text');
+            btnShowPassi.classList.remove('fa-eye');
+            btnShowPassi.classList.add('fa-eye-slash');
             showPass = 1;
         }
         else {
-            $(this).next('input').attr('type','password');
-            $(this).find('i').removeClass('fa-eye-slash');
-            $(this).find('i').addClass('fa-eye');
+            btnShowPass.nextElementSibling.setAttribute('type','password');
+            btnShowPassi.classList.remove('fa-eye-slash');
+            btnShowPassi.classList.add('fa-eye');
             showPass = 0;
         }
 

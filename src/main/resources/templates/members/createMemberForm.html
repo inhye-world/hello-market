@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-
+<link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
 <body>
 <div class="container">
   <form action="/members/new" method="post">
@@ -19,5 +21,7 @@
     <button type="submit">등록</button>
   </form>
 </div>
+<script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
 </body>
 </html>
