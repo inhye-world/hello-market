@@ -26,6 +26,13 @@ public class MemberController {
                 return "members/loginForm";
         }
 
+        //로그인 실패
+        @GetMapping("/failLogin")
+        public String loginFail() {
+
+                return "members/failLogin";
+        }
+
         @GetMapping("/new")
         public String createForm(Member member){
                 return "members/createMemberForm";
