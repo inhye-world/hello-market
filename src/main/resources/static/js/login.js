@@ -1,8 +1,7 @@
 'use strict';
 
 
-    /*==================================================================
-    [ Validate ]*/
+    /*[ login Validate ]*/
     const inputData = document.querySelector('#loginForm');
     const username = document.getElementById('username');
     const password = document.getElementById('password');
@@ -34,7 +33,6 @@
 
     let showPass = 0;
     btnShowPass.addEventListener('click', (event) => {
-    console.log(event.currentTarget.classList);
         if(showPass == 0) {
             btnShowPass.nextElementSibling.setAttribute('type','text');
             btnShowPassi.classList.remove('fa-eye');
