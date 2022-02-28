@@ -13,4 +13,6 @@ public interface ChatRoomMapper {
     List<ChatRoom> findAllChatroom(String username);
 
     ChatRoom findRoomById(int roomId);
+
+    void createChatRoom(String name);
 }

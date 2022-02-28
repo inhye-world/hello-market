@@ -46,6 +46,7 @@ public class MemberController {
                         model.addAttribute("invalid_id", "이미 존재하는 아이디 입니다.");
                         return "members/createMemberForm";
                 }
+
                 //비밀번호 확인이 일치하지 않을 때
                 if(!member.getPwd().isEmpty()){
                         if(!member.isPwdEqual()){

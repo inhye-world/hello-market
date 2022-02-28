@@ -20,6 +20,7 @@ public class ChatRoomService {
     }
 
     public void createChatRoom(String name) {
+        chatRoomMapper.createChatRoom(name);
     }
 
     public ChatRoom findRoomById(int roomId) throws Exception{

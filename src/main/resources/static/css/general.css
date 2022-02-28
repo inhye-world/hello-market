@@ -329,4 +329,9 @@ button:hover {
     right: 18px;
 }
 
+.validation_message{
+    font-size: 12px;
+    color: #57b846;
+    padding-left: 10px;
+}
 /* alert validate end*/

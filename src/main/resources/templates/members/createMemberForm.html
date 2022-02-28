@@ -13,6 +13,7 @@
       <span class="txt1 p-b-11" for="username">닉네임</span>
       <div class="wrap-input validate-input m-b-36" data-validate = "Username is required">
         <input class="input-txt" type="text" id="username" name="username" placeholder="닉네임을 입력하세요">
+        <span class="validation_message" th:text="${invalid_id}"></span>
       </div>
       <span class="txt1 p-b-11" for="password">비밀번호</span>
       <div class="wrap-input validate-input m-b-36" data-validate = "Password is required">
@@ -20,6 +21,7 @@
             <i class="fa fa-eye"></i>
         </span>
         <input class="input-txt" type="password" id="password" name="pwd" placeholder="비밀번호를 입력하세요">
+        <span th:text="${invalid_pwd}"></span>
       </div>
       <span class="txt1 p-b-11" for="password">비밀번호 확인</span>
       <div class="wrap-input validate-input m-b-36" data-validate = "Ckeck is required">
@@ -27,6 +29,7 @@
             <i class="fa fa-eye"></i>
         </span>
         <input class="input-txt" type="password" id="password-check" name="pwd_cf" placeholder="비밀번호를 입력하세요">
+        <span class="validation_message" th:text="${invalid_pwd_cf}"></span>
       </div>
       <button id="submitSignup" type="submit">등록</button>
     </form>
