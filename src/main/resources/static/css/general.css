@@ -160,6 +160,62 @@ button:hover {
 }
 /*login css end */
 
+/* sign up css start */
+.container_signup{
+    width:100%;
+    height:100%;
+    background-color: var(--color-general);
+    justify-content: center;
+    align-items: center;
+}
+
+.wrap_signup{
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left: -280px;
+    margin-top: -300px;
+    background-color: #fff;
+    width : 560px;
+    height: 600px;
+    border-radius: 10px;
+}
+
+#submitSignup{
+    float: right;
+}
+
+.btn-show-pass-chk {
+    font-size: 15px;
+    color: #999999;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 12px;
+    padding: 0 5px;
+    cursor: pointer;
+    -webkit-transition: background 0.4s;
+    -o-transition: background 0.4s;
+    -moz-transition: background 0.4s;
+    transition: background 0.4s;
+}
+
+.btn-show-pass-chk:hover {
+    color: var(--color-general);
+}
+
+.btn-show-pass-chk.active {
+    color: var(--color-general);
+}
+/* sign up css end */
+
 /* input start */
 .wrap-input {
     width: 100%;
@@ -220,6 +276,10 @@ button:hover {
 }
 
 .alert-validate .btn-show-pass {
+    visibility: hidden;
+}
+
+.alert-validate .btn-show-pass-chk {
     visibility: hidden;
 }
 
