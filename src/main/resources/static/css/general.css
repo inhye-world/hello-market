@@ -349,3 +349,13 @@ button:hover {
 .card-desc{
     width : 250px;
 }
+
+/*add content*/
+.upload-btn{
+    /*background-color: transparent;*/
+    color: var(--color-general);
+    position: fixed;
+    width: 50px;
+    font-size: 50px;
+    right: 15px;
+}
