@@ -9,13 +9,56 @@
     <div>
         <h1>Hello Market</h1>
         <div sec:authorize="!isAuthenticated()">
-            <p>헬로마켓에 오신걸 환영합니다~!</p>
+            <p>나의 그림을 거래해요!</p>
             <a href="/members/login">로그인</a>
             <a href="/members/new">회원가입</a>
         </div>
         <div sec:authorize="isAuthenticated()">
             <div><strong><span class="mb-5" sec:authentication="principal.username"></span></strong>님! 오늘도 즐거운 드로잉하세요!</div>
             <a href="/chat/rooms">헬로채팅</a>
+        </div>
+        <div class="card-wrap">
+            <article class="card-top">
+                <a class="card-link" data-event-label="1234" th:href="@{/articles/}">
+                    <div class="card-photo">
+                        <img th:src="@{/images/examples/draw1.jpg}">
+                    </div>
+                    <div class="card-desc">
+                        <h2 class="card-title">
+                            만화체 그림 그려드려요
+                        </h2>
+                        <div class="card-price">
+                            500원
+                        </div>
+                    </div>
+                </a>
+                <a class="card-link" href="/articles/">
+                    <div class="card-photo">
+                        <img th:src="@{/images/examples/draw2.jpg}">
+                    </div>
+                    <div class="card-desc">
+                        <h2 class="card-title">
+                            연필 데셍화
+                        </h2>
+                        <div class="card-price">
+                            500원
+                        </div>
+                    </div>
+                </a>
+                <a class="card-link" href="/articles/">
+                    <div class="card-photo">
+                        <img th:src="@{/images/examples/draw3.jpg}">
+                    </div>
+                    <div class="card-desc">
+                        <h2 class="card-title">
+                            소품 그림 그려드려요!
+                        </h2>
+                        <div class="card-price">
+                            500원
+                        </div>
+                    </div>
+                </a>
+            </article>
         </div>
     </div>
 </div>
