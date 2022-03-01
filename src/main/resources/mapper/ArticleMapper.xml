@@ -3,12 +3,18 @@
 
 <mapper namespace="inhye.hellomarket.mapper.ArticleMapper">
     <select id="getArticleList" resultType="Article">
-        select anum, title, description, aname, hit, date from article order by date desc
+        select anum, title, description, aname, hit, date, price from article order by date desc
     </select>
+
     <select id="getArticle" resultType="Article">
-        select anum, title, description, aname, date from article where anum=#{anum}
+        select anum, title, description, aname, date, price from article where anum=#{anum}
     </select>
+
     <insert id="insertArticle">
         insert into article(title, description, aname, hit, date, price) values (#{title}, #{description}, #{aname}, 0, #{date})
     </insert>
+
+    <update id="updateHit">
+        update article set hit=hit+1 where anum=#{anum}
+    </update>
 </mapper>

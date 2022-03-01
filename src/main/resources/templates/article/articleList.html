@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
     <title>인기의뢰</title>
+</head>
+<body>
     <section id="content">
         <h1 class="head-title" id="hot-commitions">인기 의뢰</h1>
     </section>
     <section class="cards-wrap">
         <article class="card-top" th:each="article : ${articleList}">
-            <a class="card-link" href="@{/articles/details}">
+            <a class="card-link" th:href="@{'/articles/details/'+${article.getAnum()}}">
                 <div class="card-photo"></div>
                 <h2 class="card-title" th:text="${article.getTitle()}"></h2>
                 <div class="card-price" th:text="${article.getPrice()}"></div>
-                <!--<div class="interest">관심</div>-->
+                <div class="interestcard-hit" th:text="${article.getHit()}"></div>
             </a>
         </article>
     </section>
-</head>
-<body>
-
 </body>
 </html>

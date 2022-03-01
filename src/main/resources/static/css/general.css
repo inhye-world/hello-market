@@ -361,7 +361,7 @@ button:hover {
     font-size : 16px;
 }
 
-/*add content*/
+/* add article start */
 .upload-btn{
     /*background-color: transparent;*/
     color: var(--color-general);
@@ -370,3 +370,17 @@ button:hover {
     font-size: 50px;
     right: 15px;
 }
+/* add article end */
+
+/* article css start */
+.cards-wrap{
+    display: flex;
+}
+
+.cards-wrap .card-top{
+    box-sizing: border-box;
+    margin-right: 44px;
+    margin-bottom: 56px;
+}
+
+/* article css end */

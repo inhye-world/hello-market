@@ -28,6 +28,7 @@ public class ArticleService {
     }
 
     public Article getArticle(int anum) {
+        log.info("anum..."+anum);
         articleMapper.updateHit(anum);
         return articleMapper.getArticle(anum);
     }
