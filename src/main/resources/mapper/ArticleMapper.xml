@@ -9,6 +9,6 @@
         select anum, title, description, aname, date from article where anum=#{anum}
     </select>
     <insert id="insertArticle">
-        insert into article(title, description, aname, hit, date) values (#{title}, #{description}, #{aname}, 0, #{date})
+        insert into article(title, description, aname, hit, date, price) values (#{title}, #{description}, #{aname}, 0, #{date})
     </insert>
 </mapper>

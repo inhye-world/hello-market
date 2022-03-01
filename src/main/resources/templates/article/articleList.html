@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>인기의뢰</title>
+    <section id="content">
+        <h1 class="head-title" id="hot-commitions">인기 의뢰</h1>
+    </section>
+    <section class="cards-wrap">
+        <article class="card-top" th:each="article : ${articleList}">
+            <a class="card-link" href="@{/articles/details}">
+                <div class="card-photo"></div>
+                <h2 class="card-title" th:text="${article.getTitle()}"></h2>
+                <div class="card-price" th:text="${article.getPrice()}"></div>
+                <!--<div class="interest">관심</div>-->
+            </a>
+        </article>
+    </section>
+</head>
+<body>
+
+</body>
+</html>

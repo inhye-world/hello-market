@@ -3,6 +3,7 @@ package inhye.hellomarket.dto;
 public class Article {
     private String username;
     private int anum;
+    private int price;
     private String aname;
     private String date;
     private String title;
@@ -63,5 +64,13 @@ public class Article {
 
     public void setHit(int hit) {
         this.hit = hit;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

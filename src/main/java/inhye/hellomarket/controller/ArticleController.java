@@ -20,15 +20,16 @@ public class ArticleController {
     @Autowired
     ArticleService articleService;
 
-    @GetMapping("/")
+    @GetMapping("/list")
     public String main(Model model){
+        log.info("의뢰 리스트");
         model.addAttribute("articleList", articleService.getArticleList());
-        return "board/main";
+        return "article/articleList";
     }
 
     @RequestMapping("/details/{anum}")
     public String articleView(@PathVariable("anum") int anum, Model model){
         Article article = articleService.getArticle(anum);
-        return "/article/detailPage";
+        return "article/detailPage";
     }
 }
