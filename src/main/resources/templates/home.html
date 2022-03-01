@@ -8,23 +8,30 @@
 <body>
 <div class="container">
     <div>
-        <h1>Hello Market</h1>
-        <div sec:authorize="!isAuthenticated()">
-            <p>나의 그림을 거래해요!</p>
-            <a href="/members/login">로그인</a>
-            <a href="/members/new">회원가입</a>
-        </div>
-        <div sec:authorize="isAuthenticated()">
-            <div><strong><span class="mb-5" sec:authentication="principal.username"></span></strong>님! 오늘도 즐거운 드로잉하세요!</div>
-            <a href="/chat/rooms">헬로채팅</a>
+        <div class="navbar_menu_wrap">
+            <a class="navbar-brand" href="/">Hello Market</a>
+            <div class="navbar-collapse">
+                <ul class="navbar_menu">
+                    <li class="navbar__menu_item active"><a href="/">헬로마켓 홈</a></li>
+                    <li class="navbar__menu_item"><a href="/articles">의뢰</a></li>
+                </ul>
+                <ul sec:authorize="!isAuthenticated()" class="navbar_menu">
+                    <li class="navbar__menu_item"><a href="/members/login">로그인</a></li>
+                    <li class="navbar__menu_item"><a href="/members/new">가입하기</a></li>
+                </ul>
+                <ul sec:authorize="isAuthenticated()" class="navbar_menu">
+                    <li class="navbar__menu_item"><a href="/chat">헬로채팅</a></li>
+                    <li class="navbar__menu_item"><a href="#">마이페이지</a></li>
+                </ul>
+            </div>
         </div>
         <div class="card-wrap">
             <article class="card-top">
-                <a class="card-link" data-event-label="1234" th:href="@{/articles/}">
+                <a class="card-link" data-event-label="1234" th:href="@{/articles/details/}">
                     <div class="card-photo">
                         <img th:src="@{/images/examples/draw1.jpg}">
                     </div>
-                    <div class="card-desc">
+                    <div class="card-desc" href="/articles/">
                         <h2 class="card-title">
                             만화체 그림 그려드려요
                         </h2>
@@ -33,7 +40,7 @@
                         </div>
                     </div>
                 </a>
-                <a class="card-link" href="/articles/">
+                <a class="card-link">
                     <div class="card-photo">
                         <img th:src="@{/images/examples/draw2.jpg}">
                     </div>
@@ -46,7 +53,7 @@
                         </div>
                     </div>
                 </a>
-                <a class="card-link" href="/articles/">
+                <a class="card-link">
                     <div class="card-photo">
                         <img th:src="@{/images/examples/draw3.jpg}">
                     </div>

@@ -79,6 +79,13 @@ button:hover {
     cursor: pointer;
 }
 
+/* nav bar menu start */
+.navbar_menu,
+.navbar-collapse{
+    display: flex;
+    margin-left: auto !important;
+}
+/* nav bar menu end */
 
 /* login css start */
 .container_login{
@@ -348,6 +355,10 @@ button:hover {
 
 .card-desc{
     width : 250px;
+}
+
+.card-title{
+    font-size : 16px;
 }
 
 /*add content*/

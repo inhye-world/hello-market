@@ -5,3 +5,14 @@ create table member
     name varchar(255),
     primary key (id)
 );
+
+CREATE TABLE article (
+     anum int NOT NULL AUTO_INCREMENT,
+     title varchar(50) DEFAULT NULL,
+     description varchar(200) DEFAULT NULL,
+     aname varchar(10) DEFAULT NULL,
+     hit int DEFAULT NULL,
+     date date DEFAULT NULL,
+     PRIMARY KEY (`anum`),
+     FOREIGN KEY (`aname`) REFERENCES `member` (`username`)
+)
