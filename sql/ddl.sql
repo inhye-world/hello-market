@@ -16,3 +16,12 @@ CREATE TABLE article (
      PRIMARY KEY (`anum`),
      FOREIGN KEY (`aname`) REFERENCES `member` (`username`)
 )
+
+CREATE TABLE `chatroom` (
+    `roomId` bigint NOT NULL AUTO_INCREMENT,
+    `username` varchar(200) DEFAULT NULL,
+    `artist` varchar(100) DEFAULT NULL,
+    `anum` int DEFAULT NULL,
+    PRIMARY KEY (`roomId`),
+    FOREIGN KEY (`anum`) REFERENCES `article` (`anum`)
+)

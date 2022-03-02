@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="artist-name" th:text="${artist}"></div>
-    <a class="deal_chat" th:href="@{'/chat/room/'+${anum}}">
+    <a class="deal_chat" th:href="@{'/chat/create/room/'+${anum} + '/'+ ${artist}}">
         채팅으로 거래하기
     </a>
 </body>

@@ -11,7 +11,11 @@
         select * from chatroom where roomId = #{roomId}
     </select>
 
+    <select id="findRoomByRoomInfo" resultType="ChatRoom">
+        select * from chatroom where username = #{username} and artist = #{artist} and anum = #{anum}
+    </select>
+
     <insert id="createChatRoom">
-        insert into chatroom(username, name) values(#{username}, ${name})
+        insert into chatroom(username, artist, anum) values(#{username}, #{artist}, #{anum})
     </insert>
 </mapper>
