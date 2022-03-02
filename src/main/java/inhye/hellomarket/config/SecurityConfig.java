@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/", "/members/new", "/members/failLogin")
                     .permitAll()
-                    .antMatchers("/chat/**")
+                    .antMatchers("/chat/**", "/articles/writeView")
                     .authenticated()
                 .and()
                     .formLogin()

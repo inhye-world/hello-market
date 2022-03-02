@@ -11,7 +11,7 @@
     </select>
 
     <insert id="insertArticle">
-        insert into article(title, description, aname, hit, date, price) values (#{title}, #{description}, #{aname}, 0, #{date})
+        insert into article(title, description, aname, hit, date, price) values (#{title}, #{description}, #{aname}, 0, #{date}, #{price})
     </insert>
 
     <update id="updateHit">

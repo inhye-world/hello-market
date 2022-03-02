@@ -20,7 +20,7 @@
                     <li class="navbar__menu_item"><a href="/members/new">가입하기</a></li>
                 </ul>
                 <ul sec:authorize="isAuthenticated()" class="navbar_menu">
-                    <li class="navbar__menu_item"><a href="/chat">헬로채팅</a></li>
+                    <li class="navbar__menu_item"><a href="/chat/rooms">헬로채팅</a></li>
                     <li class="navbar__menu_item"><a href="#">마이페이지</a></li>
                 </ul>
             </div>
@@ -69,8 +69,9 @@
             </article>
         </div>
         <div class="uploadMydraw">
-            <input type="button" class="upload-btn">
-                <i class="fa-solid fa-feather-pointed"></i>
+            <a class="upload-btn" th:href="@{/articles/writeView}">
+                <i class="fas fa-plus-circle"></i>
+            </a>
         </div>
     </div>
 </div>

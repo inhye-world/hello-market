@@ -362,13 +362,13 @@ button:hover {
 }
 
 /* add article start */
-.upload-btn{
-    /*background-color: transparent;*/
-    color: var(--color-general);
+.fa-plus-circle{
     position: fixed;
-    width: 50px;
-    font-size: 50px;
     right: 15px;
+    font-size: 50px;
+    z-index: 1;
+    bottom: 10px;
+    color: var(--color-dimgray);
 }
 /* add article end */
 
@@ -384,3 +384,38 @@ button:hover {
 }
 
 /* article css end */
+
+/* go back start */
+.chat-head{
+    display: flex;
+}
+
+.fa-angle-left{
+    display: inline-block;
+    z-index: 3;
+    font-size: 50px;
+    color: #424242;
+    padding-right: 10px;
+}
+
+.fa-angle-left:before {
+    content: "\f104";
+}
+/* go back end */
+
+/* chat css start */
+.chat-input{
+    border: solid 1px #6c757d;
+    border-radius: 5px;
+    margin-right: 5px;
+    height : 25px;
+}
+
+.btn-chat-msg{
+    height : 25px;
+}
+
+.input-group{
+    display: flex;
+}
+/* chat css end */

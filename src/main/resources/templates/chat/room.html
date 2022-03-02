@@ -3,27 +3,32 @@
 <head>
     <link rel="stylesheet" type="text/css" th:href="@{/css/general.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.15.4/css/all.css}" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
 </head>
 <body>
     <div class="container">
-        <div class="col-6">
-            <h1>[[${room.name}]]</h1>
+        <div class="chat-head">
+            <a class="arrow-back" th:href="@{/articles/list}">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            <div><h1>[[${room.name}]]</h1></div>
         </div>
         <div>
             <div id="msgArea" class="col"></div>
             <div class="col-6">
                 <div class="input-group mb-3">
-                    <input type="text" id="msg" class="form-control">
+                    <input type="text" id="msg" class="chat-input">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-send">전송</button>
+                        <button class="btn btn-chat-msg" type="button" id="button-send">전송</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-6"></div>
     </div>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js}"></script>
 </body>
 <script th:inline="javascript">
     /*<![CDATA[*/

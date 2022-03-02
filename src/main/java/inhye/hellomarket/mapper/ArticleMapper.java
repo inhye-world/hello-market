@@ -15,4 +15,6 @@ public interface ArticleMapper {
     void updateHit(int anum);
 
     Article getArticle(int anum);
+
+    void insertArticle(Article article);
 }

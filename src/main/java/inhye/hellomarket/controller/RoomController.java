@@ -29,11 +29,11 @@ public class RoomController {
     }
 
     //제품 정보 창에서 채팅방 개설 name은 작가의 닉네임
-    @PostMapping(value = "/room")
-    public String createRoom(@RequestParam String name, Model model){
-        chatRoomService.createChatRoom(name);
-        log.info("채팅방 개설"+ name);
-        model.addAttribute("roomName", name);
+    @PostMapping(value = "/room/{anum}")
+    public String createRoom(@PathVariable("anum") int anum, @PathVariable("artist") String artist, Model model){
+        chatRoomService.createChatRoom(artist);
+        log.info(artist + "와의 채팅방 개설");
+        model.addAttribute("roomName", artist);
         return "redirect:/chat/chatRooms";
     }
 

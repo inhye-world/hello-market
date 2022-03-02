@@ -6,7 +6,8 @@
     <title>님의 의뢰</title>
 </head>
 <body>
-    <a class="deal_chat" th:href="@{/chat/room/1001}">
+    <div class="artist-name" th:text="${artist}"></div>
+    <a class="deal_chat" th:href="@{'/chat/room/'+${anum}}">
         채팅으로 거래하기
     </a>
 </body>
