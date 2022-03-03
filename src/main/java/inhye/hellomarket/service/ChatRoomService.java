@@ -46,7 +46,7 @@ public class ChatRoomService {
         //로컬경로에 파일 생성
         txtFile.createNewFile();
 
-        chatRoomMapper.updateFileName(username, artist, anum, fileName);
+        updateFileName(username, artist, anum, fileName);
     }
 
     public ChatRoom findRoomById(int roomId) throws Exception{
