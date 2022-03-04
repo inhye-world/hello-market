@@ -4,7 +4,7 @@
 <mapper namespace="inhye.hellomarket.mapper.ChatRoomMapper">
 
     <select id="findAllChatroom" resultType="ChatRoom">
-        select * from chatroom where username = #{username}
+        select * from chatroom where username = #{username} or artist = #{username}
     </select>
 
     <select id="findRoomById" resultType="ChatRoom">
@@ -19,7 +19,5 @@
         insert into chatroom(username, artist, anum) values(#{username}, #{artist}, #{anum})
     </insert>
 
-    <update id="updateFileName">
-        update chatroom set fileName=#{fileName} where username=#{username} and artist=#{artist} and anum=#{anum}
-    </update>
+
 </mapper>

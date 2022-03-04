@@ -23,9 +23,9 @@ public class RoomController {
     //채팅방 목록조회
     @GetMapping(value = "/rooms")
     public String rooms(@AuthenticationPrincipal CustomUserDetails principal, Model model){
-        log.info("# All Chat Rooms");
         String accessId = principal.getUsername();
-        log.info("owner : "+accessId);
+
+        model.addAttribute("accessId", accessId);
         model.addAttribute("roomList", chatRoomService.findAllChatroom(accessId));
 
         return "/chat/chatRooms";
@@ -50,8 +50,8 @@ public class RoomController {
 
         model.addAttribute("room", chatRoomService.findRoomById(roomId));
 
-        List<ChatRoom> chatHistory = chatRoomService.readChatHistory(chatRoomService.findRoomById(roomId));
-        model.addAttribute("chatHistory", chatHistory);
+        //List<ChatRoom> chatHistory = chatRoomService.readChatHistory(chatRoomService.findRoomById(roomId));
+        //model.addAttribute("chatHistory", chatHistory);
         return "/chat/room";
     }
 }

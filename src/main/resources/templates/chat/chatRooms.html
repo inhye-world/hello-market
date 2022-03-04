@@ -5,10 +5,11 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
 </head>
 <body>
+    <h2>[[${accessId}]]님의 채팅</h2>
     <div class="container">
         <div>
             <ul th:each="room : ${roomList}">
-                <li><a th:href="@{'/chat/room/'+${room.roomId}}">[[${room.name}]]</a></li>
+                <li><a th:href="@{'/chat/room/'+${room.roomId}}">[[${room.roomTitle}]]</a></li>
             </ul>
         </div>
     </div>

@@ -16,6 +16,15 @@ public class ChatRoom {
     private String content;
     private String sendTime;
     private String senderName;
+    private String roomTitle;
+
+    public String getRoomTitle() {
+        return roomTitle;
+    }
+
+    public void setRoomTitle(String roomTitle) {
+        this.roomTitle = roomTitle;
+    }
 
     public String getUsername() {
         return username;

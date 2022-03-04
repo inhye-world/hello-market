@@ -20,5 +20,5 @@ public interface ChatRoomMapper {
 
     ChatRoom findRoomByRoomInfo(@Param("username") String username, @Param("artist") String artist, @Param("anum") int anum);
 
-    void updateFileName(String username, String artist, int anum, String fileName);
+    //void updateFileName(String username, String artist, int anum, String fileName);
 }
