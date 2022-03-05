@@ -9,7 +9,8 @@
     <div class="container">
         <div>
             <ul th:each="room : ${roomList}">
-                <li><a th:href="@{'/chat/room/'+${room.roomId}}">[[${room.roomTitle}]]</a></li>
+                <li th:if="${#strings.equals(#strings.toString(room.artist), '${accessId}')}"><a th:href="@{'/chat/room/'+${room.roomId}}">[[${room.username}]]</a></li>
+                <li th:unless="${#strings.equals(#strings.toString(room.artist), '${accessId}')}"><a th:href="@{'/chat/room/'+${room.roomId}}">[[${room.artist}]]</a></li>
             </ul>
         </div>
     </div>
