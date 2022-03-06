@@ -375,9 +375,17 @@ button:hover {
 /* article css start */
 .cards-wrap{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
 }
 
-.cards-wrap .card-top{
+.card-top{
+    position: relative;
+    width: 200px;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
     box-sizing: border-box;
     margin-right: 44px;
     margin-bottom: 56px;
@@ -419,3 +427,4 @@ button:hover {
     display: flex;
 }
 /* chat css end */
+
