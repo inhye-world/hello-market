@@ -343,24 +343,6 @@ button:hover {
 }
 /* alert validate end*/
 
-/* article start */
-.card-top{
-    display: flex;
-}
-
-.card-photo img{
-    width : 250px;
-    height : 300px;
-}
-
-.card-desc{
-    width : 250px;
-}
-
-.card-title{
-    font-size : 16px;
-}
-
 /* add article start */
 .fa-plus-circle{
     position: fixed;
@@ -373,10 +355,25 @@ button:hover {
 /* add article end */
 
 /* article css start */
+
+.card-photo img{
+    width : 250px;
+    height : 300px;
+    border-radius: 12px;
+}
+
+.card-desc{
+    width : 250px;
+}
+
+.card-title {
+    font-size: 16px;
+}
+
 .cards-wrap{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     text-align: center;
 }
 
@@ -389,6 +386,7 @@ button:hover {
     box-sizing: border-box;
     margin-right: 44px;
     margin-bottom: 56px;
+    padding-right: 44px;
 }
 
 /* article css end */
