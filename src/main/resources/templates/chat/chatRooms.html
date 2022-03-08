@@ -7,12 +7,34 @@
 <body>
     <h2>[[${accessId}]]님의 채팅</h2>
     <div class="container">
-        <div>
-            <ul th:each="room : ${roomList}">
-                <li th:if="${#strings.equals(#strings.toString(room.artist), '${accessId}')}"><a th:href="@{'/chat/room/'+${room.roomId}}">[[${room.username}]]</a></li>
-                <li th:unless="${#strings.equals(#strings.toString(room.artist), '${accessId}')}"><a th:href="@{'/chat/room/'+${room.roomId}}">[[${room.artist}]]</a></li>
-            </ul>
-        </div>
+        <ul id="chatWrap">
+        </ul>
     </div>
 </body>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let rooms = [[${roomList}]];
+    let str = '';
+
+    const roomElement = document.getElementById('chatWrap');
+    rooms.forEach(function(item){
+        if(item.artist == [[${accessId}]]){
+            str += "<li class='roomTitle'>";
+            str += "<a href='/chat/room/"+ item.roomId+ "'>" + item.username + "___" + item.roomTitle;
+            str += "</a>";
+            str += "</li>";
+            roomElement.innerHTML += str;
+        }else{
+            str += "<li class='roomTitle'>";
+            str += "<a href='/chat/room/"+ item.roomId+ "'>" + item.artist;
+            str += "</a>";
+            str += "</li>";
+            roomElement.innerHTML += str;
+        }
+    })
+
+    /*]]>*/
+</script>
+
 </html>

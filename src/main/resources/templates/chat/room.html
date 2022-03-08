@@ -12,7 +12,10 @@
             <a class="arrow-back" th:href="@{/articles/list}">
                 <i class="fas fa-angle-left"></i>
             </a>
-            <div><h1>[[${room.artist}]]</h1></div>
+            <div>
+                <div id="titleContainer">
+                </div>
+            </div>
         </div>
         <div>
             <div id="msgArea" class="col"></div>
@@ -84,6 +87,26 @@
             msg.value = '';
         });
     });
+    /*]]>*/
+</script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const artist = [[${room.artist}]];
+    const user = [[${room.username}]]
+    const roomElement = document.getElementById('titleContainer');
+    let str = '';
+    if(artist == [[${accessId}]]){
+        str += "<h1 class='roomTitle'>";
+        str += user;
+        str += "</h1>";
+        roomElement.innerHTML += str;
+    }else{
+        str += "<h1 class='roomTitle'>";
+        str += artist;
+        str += "</h1>";
+        roomElement.innerHTML += str;
+    }
+
     /*]]>*/
 </script>
 </html>

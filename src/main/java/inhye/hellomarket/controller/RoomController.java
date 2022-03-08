@@ -45,9 +45,11 @@ public class RoomController {
 
     //채팅방 입장
     @RequestMapping(value = "/room/{roomId}")
-    public String enterChat(@PathVariable("roomId") int roomId, Model model) throws Exception {
+    public String enterChat(@AuthenticationPrincipal CustomUserDetails principal, @PathVariable("roomId") int roomId, Model model) throws Exception {
         log.info("enter chat room.... roomId : "+ roomId);
 
+        String username = principal.getUsername();
+        model.addAttribute("accessId", username);
         model.addAttribute("room", chatRoomService.findRoomById(roomId));
 
         //List<ChatRoom> chatHistory = chatRoomService.readChatHistory(chatRoomService.findRoomById(roomId));
