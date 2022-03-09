@@ -410,19 +410,70 @@ button:hover {
 /* go back end */
 
 /* chat css start */
-.chat-input{
-    border: solid 1px #6c757d;
-    border-radius: 5px;
-    margin-right: 5px;
-    height : 25px;
+.container_chat{
+    width:100%;
+    height:100%;
+    background-color: var(--color-general);
+    justify-content: center;
+    align-items: center;
 }
 
-.btn-chat-msg{
-    height : 25px;
+.chat-wrap{
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-top: -350px;
+    margin-left: -280px;
+    width : 560px;
+    height: 700px;
+}
+
+#msgArea{
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: auto;
+    width : 100%;
+    height: 100%;
+}
+
+#msgArea::-webkit-scrollbar{
+    width: 6px;
+}
+
+#msgArea::-webkit-scrollbar-thumb{
+    height:70%;
+    background-color: var(--color-dimgray);
+    border-radius: 10px;
+}
+
+#msgArea::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.alert-secondary{
+    margin-left: 20px;
+}
+
+.chat-input-area{
+    width:560px;
+}
+
+.chat-input{
+    width:560px;
+    border: solid 1px transparent;
+    border-radius: 5px;
+    margin-right: 5px;
+    height : 30px;
+    padding-left: 10px;
 }
 
 .input-group{
     display: flex;
+    margin-top: 2px;
+}
+
+.btn-chat-msg{
+    height: 30px;
 }
 /* chat css end */
 
