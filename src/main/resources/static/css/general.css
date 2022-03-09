@@ -477,3 +477,23 @@ button:hover {
 }
 /* chat css end */
 
+/* chat rooms css start */
+#chatWrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.roomTitle{
+    position: relative;
+    width: 200px;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-right: 44px;
+    margin-bottom: 56px;
+    padding-right: 44px;
+}
+/* chat rooms css end */
