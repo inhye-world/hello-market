@@ -31,7 +31,10 @@ public class ArticleController {
     }
 
     @RequestMapping("/details/{anum}")
-    public String articleView(@PathVariable("anum") int anum, Model model){
+    public String articleView(@AuthenticationPrincipal CustomUserDetails principal, @PathVariable("anum") int anum, Model model){
+        String userName = principal.getUsername();
+        model.addAttribute("accessId", userName);
+
         Article article = articleService.getArticle(anum);
         model.addAttribute("anum", anum);
         model.addAttribute("artist", article.getAname());
