@@ -19,5 +19,7 @@
         insert into chatroom(username, artist, anum) values(#{username}, #{artist}, #{anum})
     </insert>
 
-
+    <update id="updateFileName">
+        update chatroom set filename= #{fileName} where username=#{username} and artist = #{artist} and anum = #{anum}
+    </update>
 </mapper>

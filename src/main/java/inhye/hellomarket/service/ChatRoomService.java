@@ -17,8 +17,8 @@ public class ChatRoomService {
     @Autowired
     ChatRoomMapper chatRoomMapper;
 
-    //@Value("${file.upload.path.txt}")
-    //String fileUploadPath;
+    @Value("${spring.servlet.multipart.location}")
+    String fileUploadPath;
 
     public List<ChatRoom> findAllChatroom(String username){
         log.info(username,"의 채팅목록 조회");
@@ -33,21 +33,26 @@ public class ChatRoomService {
         //해당 의뢰건에 대해 사용자와 작가간에 채팅창이 있다면 만들지 않고 입장
         if(chatRoomMapper.findRoomByRoomInfo(username, artist, anum) == null){
             chatRoomMapper.createChatRoom(username, artist, anum);
-            //createChatFile(username, artist, anum);
+            createChatFile(username, artist, anum);
         }
         return chatRoomMapper.findRoomByRoomInfo(username, artist, anum);
     }
 
-    /*private void createChatFile(String username, String artist, int anum) throws IOException {
+    private void createChatFile(String username, String artist, int anum) throws IOException {
         String fileName = username + "_" + artist + "_" + anum + ".txt";
         String pathName = fileUploadPath + fileName;
         //File 클래스에 pathName 할당
+
         File txtFile = new File(pathName);
         //로컬경로에 파일 생성
         txtFile.createNewFile();
-
+        log.info("파일 생성 확인~!");
         updateFileName(username, artist, anum, fileName);
-    }*/
+    }
+
+    public void updateFileName(String username, String artist, int anum, String fileName) {
+        chatRoomMapper.updateFileName(username, artist, anum, fileName);
+    }
 
     public ChatRoom findRoomById(int roomId) throws Exception{
         return chatRoomMapper.findRoomById(roomId);
@@ -84,10 +89,5 @@ public class ChatRoomService {
             }
         }
         return chatHistory;
-    }*/
-
-    /*public void updateFileName(String username, String artist, int anum, String fileName) {
-
-        chatRoomMapper.updateFileName(username, artist, anum, fileName);
     }*/
 }
