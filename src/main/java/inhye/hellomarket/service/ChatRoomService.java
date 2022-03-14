@@ -43,15 +43,17 @@ public class ChatRoomService {
         String pathName = fileUploadPath + fileName;
         //File 클래스에 pathName 할당
 
+        log.info("fileUploadPath : " + fileUploadPath);
+        log.info("pathName : " + pathName);
         File txtFile = new File(pathName);
         //로컬경로에 파일 생성
         txtFile.createNewFile();
         log.info("파일 생성 확인~!");
-        updateFileName(username, artist, anum, fileName);
+        updateFileName(fileName, username, artist, anum);
     }
 
-    public void updateFileName(String username, String artist, int anum, String fileName) {
-        chatRoomMapper.updateFileName(username, artist, anum, fileName);
+    public void updateFileName(String fileName, String username, String artist, int anum) {
+        chatRoomMapper.updateFileName(fileName, username, artist, anum);
     }
 
     public ChatRoom findRoomById(int roomId) throws Exception{
