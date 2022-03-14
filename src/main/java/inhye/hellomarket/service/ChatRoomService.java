@@ -25,10 +25,6 @@ public class ChatRoomService {
         return chatRoomMapper.findAllChatroom(username);
     }
 
-    /*public void createChatRoom(String username, String artist, int anum) {
-        chatRoomMapper.createChatRoom(username, artist, anum);
-    }*/
-
     public ChatRoom checkChatRoom(String username, String artist, int anum) throws IOException {
         //해당 의뢰건에 대해 사용자와 작가간에 채팅창이 있다면 만들지 않고 입장
         if(chatRoomMapper.findRoomByRoomInfo(username, artist, anum) == null){
@@ -48,7 +44,6 @@ public class ChatRoomService {
         File txtFile = new File(pathName);
         //로컬경로에 파일 생성
         txtFile.createNewFile();
-        log.info("파일 생성 확인~!");
         updateFileName(fileName, username, artist, anum);
     }
 
@@ -60,7 +55,7 @@ public class ChatRoomService {
         return chatRoomMapper.findRoomById(roomId);
     }
 
-    /*public List<ChatRoom> readChatHistory(ChatRoom chatRoom) throws IOException {
+    public List<ChatRoom> readChatHistory(ChatRoom chatRoom) throws IOException {
         String pathName = fileUploadPath + chatRoom.getFileName();
 
         BufferedReader br = new BufferedReader(new FileReader(pathName));
@@ -91,5 +86,5 @@ public class ChatRoomService {
             }
         }
         return chatHistory;
-    }*/
+    }
 }
