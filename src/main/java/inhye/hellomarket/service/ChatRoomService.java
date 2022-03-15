@@ -1,5 +1,6 @@
 package inhye.hellomarket.service;
 
+import inhye.hellomarket.dto.ChatMessage;
 import inhye.hellomarket.dto.ChatRoom;
 import inhye.hellomarket.mapper.ChatRoomMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,8 +78,6 @@ public class ChatRoomService {
                 chatRoomLines.setContent(chatLine);
                 idx++;
             } else {
-                //보낸시간
-                chatRoomLines.setSendTime(chatLine);
                 //메시지 담긴 ChatRoom 객체 List에 저장
                 chatHistory.add(chatRoomLines);
                 //객체 초기화, 줄(row)인덱스 초기화
@@ -86,5 +86,25 @@ public class ChatRoomService {
             }
         }
         return chatHistory;
+    }
+
+    public void appendMessage(ChatMessage message) throws IOException{
+        int roomId = Integer.parseInt(message.getRoomId());
+
+        ChatRoom chatRoomAppend = chatRoomMapper.findRoomById(roomId);
+
+        String pathName = fileUploadPath + chatRoomAppend.getFileName();
+
+        FileOutputStream fos = new FileOutputStream(pathName, true);
+        String content = message.getMessage();
+        String senderName = message.getWriter();
+
+        log.info(senderName +" : " + content);
+
+        String writeContent = senderName + "\n" + content + "\n";
+
+        byte[] b = writeContent.getBytes(StandardCharsets.UTF_8);
+        fos.write(b);
+        fos.close();
     }
 }

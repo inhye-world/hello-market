@@ -14,7 +14,6 @@ public class ChatRoom {
     public String fileName;
     private Timestamp createdDate;
     private String content;
-    private String sendTime;
     private String senderName;
     private String roomTitle;
 
@@ -80,14 +79,6 @@ public class ChatRoom {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getSendTime() {
-        return sendTime;
-    }
-
-    public void setSendTime(String sendTime) {
-        this.sendTime = sendTime;
     }
 
     public String getSenderName() {

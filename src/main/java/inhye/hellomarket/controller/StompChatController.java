@@ -1,11 +1,15 @@
 package inhye.hellomarket.controller;
 
 import inhye.hellomarket.dto.ChatMessage;
+import inhye.hellomarket.dto.ChatRoom;
+import inhye.hellomarket.service.ChatRoomService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
+
+import java.io.IOException;
 
 @Controller
 @Slf4j
@@ -14,6 +18,7 @@ public class StompChatController {
 
     //특정 broker로 메시지 전달
     private final SimpMessagingTemplate template;
+    ChatRoomService chatRoomService;
 
     //client가 send할 수 있는 경로
     //stompConfig에서 설정한 applicationDestinationPrefixes와 @MessageMapping 경로가 병합됨
@@ -27,8 +32,13 @@ public class StompChatController {
     }
 
     @MessageMapping("/chat/message")
-    public void message(ChatMessage message){
+    public void message(ChatMessage message) throws IOException {
+        String roomId = message.getRoomId();
+        String writer = message.getWriter();
+        String content = message.getMessage();
+
+        chatRoomService.appendMessage(message);
         //client에서 요청한 메세지를 처리하여 "/sub/chat/room/[roomId]"로 전송
-        template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
+        template.convertAndSend("/sub/chat/room/" + roomId, message);
     }
 }
