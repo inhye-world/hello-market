@@ -17,10 +17,14 @@
             </div>
         </div>
         <div class="chat-wrap">
-            <div id="chatContent">
-
+            <div id="msgArea" class="col">
+                <div class="col-6">
+                    <div class="alert alert-secondary" th:each="history : ${chatHistory}">
+                        <b id="history-writer" th:text="${history.getWriter}"></b>
+                        <span id="history-message" th:text="${history.getMessage}"></span>
+                    </div>
+                </div>
             </div>
-            <div id="msgArea" class="col"></div>
             <div class="col-6 chat-input-area">
                 <div class="input-group mb-3">
                     <input type="text" id="msg" class="chat-input">

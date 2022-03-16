@@ -13,8 +13,6 @@ public class ChatRoom {
     public int anum;
     public String fileName;
     private Timestamp createdDate;
-    private String content;
-    private String senderName;
     private String roomTitle;
 
     public String getRoomTitle() {
@@ -71,22 +69,6 @@ public class ChatRoom {
 
     public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getSenderName() {
-        return senderName;
-    }
-
-    public void setSenderName(String senderName) {
-        this.senderName = senderName;
     }
 
     private Set<WebSocketSession> sessions = new HashSet<>();

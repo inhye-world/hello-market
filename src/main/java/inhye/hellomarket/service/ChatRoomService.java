@@ -57,31 +57,31 @@ public class ChatRoomService {
         return chatRoomMapper.findRoomById(roomId);
     }
 
-    public List<ChatRoom> readChatHistory(ChatRoom chatRoom) throws IOException {
+    public List<ChatMessage> readChatHistory(ChatRoom chatRoom) throws IOException {
         String pathName = fileUploadPath + chatRoom.getFileName();
 
+        log.info("채팅 히스토리 불러오기 : "+pathName);
+
         BufferedReader br = new BufferedReader(new FileReader(pathName));
-        ChatRoom chatRoomLines = new ChatRoom();
-        List<ChatRoom> chatHistory = new ArrayList<ChatRoom>();
+        ChatMessage MessageLines = new ChatMessage();
+        List<ChatMessage> chatHistory = new ArrayList<ChatMessage>();
 
         String chatLine;
         int idx = 1;
 
         while ((chatLine = br.readLine())!= null) {
-            int answer = idx % 3;
+            int answer = idx % 2;
             if (answer == 1) {
                 //보낸사람
-                chatRoomLines.setSenderName(chatLine);
-                idx++;
-            } else if (answer == 2) {
-                //메시지내용
-                chatRoomLines.setContent(chatLine);
+                MessageLines.setWriter(chatLine);
+                log.info("writer : "+chatLine);
                 idx++;
             } else {
-                //메시지 담긴 ChatRoom 객체 List에 저장
-                chatHistory.add(chatRoomLines);
-                //객체 초기화, 줄(row)인덱스 초기화
-                chatRoomLines = new ChatRoom();
+                //메시지내용
+                MessageLines.setMessage(chatLine);
+                log.info("message : " + chatLine);
+                chatHistory.add(MessageLines);
+                MessageLines = new ChatMessage();
                 idx = 1;
             }
         }

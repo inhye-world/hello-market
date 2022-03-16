@@ -1,5 +1,6 @@
 package inhye.hellomarket.controller;
 
+import inhye.hellomarket.dto.ChatMessage;
 import inhye.hellomarket.dto.ChatRoom;
 import inhye.hellomarket.security.CustomUserDetails;
 import inhye.hellomarket.service.ChatRoomService;
@@ -52,8 +53,8 @@ public class RoomController {
         model.addAttribute("accessId", username);
         model.addAttribute("room", chatRoomService.findRoomById(roomId));
 
-        //List<ChatRoom> chatHistory = chatRoomService.readChatHistory(chatRoomService.findRoomById(roomId));
-        //model.addAttribute("chatHistory", chatHistory);
+        List<ChatMessage> chatHistory = chatRoomService.readChatHistory(chatRoomService.findRoomById(roomId));
+        model.addAttribute("chatHistory", chatHistory);
         return "/chat/room";
     }
 }
