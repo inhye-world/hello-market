@@ -1,9 +1,9 @@
 package inhye.hellomarket.dto;
 
 public class ChatMessage {
-    private String roomId;
-    private String writer;
-    private String message;
+    public String roomId;
+    public String writer;
+    public String message;
 
     public String getRoomId() {
         return roomId;
