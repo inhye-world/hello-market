@@ -23,7 +23,7 @@ public class ChatRoomService {
     String fileUploadPath;
 
     public List<ChatRoom> findAllChatroom(String username){
-        log.info(username,"의 채팅목록 조회");
+        log.info(username+"의 채팅목록 조회");
         return chatRoomMapper.findAllChatroom(username);
     }
 
